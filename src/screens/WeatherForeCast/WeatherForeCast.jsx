@@ -11,13 +11,13 @@ import CityApi from '../../api/cityApi'
 import { useRecoilState } from 'recoil'
 import { WeatherForecastState } from '../../globalState/weatherForecastState'
 export default function WeatherForeCast() {
-    const slug = useParams()
+    const { lat, lon } = useParams()
     const [weatherForecast, SetWeatherForecast] = useRecoilState(WeatherForecastState)
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await CityApi.getWeatherForecast(slug.lat, slug.lon)
+                const response = await CityApi.getWeatherForecast(lat, lon)
                 console.log('Fetch weatherdata successfully: ', response);
                 SetWeatherForecast(response)
 
@@ -26,7 +26,8 @@ export default function WeatherForeCast() {
             }
         }
         fetchData()
-    }, [slug])
+    }, [lat])
+    console.log(lat);
     return (
         <div className='WeatherForeCast'>
             <div className='headW d-flex w-100 py-5'>
