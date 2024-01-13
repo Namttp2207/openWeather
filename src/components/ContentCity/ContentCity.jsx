@@ -18,10 +18,10 @@ export default function ContentCity() {
     }, []);
 
 
-    const HandleCity = async (city, index) => {
+    const HandleCity = async (city) => {
         nav(`/${city.coord.lat}/${city.coord.lon}`, { replace: true })
         sessionStorage.setItem('cityName', city.name)
-        SetChecked(city.name + index)
+        SetChecked(city.name)
         SetDaily(undefined)
     }
     return (
@@ -30,7 +30,7 @@ export default function ContentCity() {
             <ul className='list-group list-group-horizontal w-100 text-center overflow-x-auto gap-3'>
                 {
                     dataCity.map((city, index) => {
-                        return <li role='button' style={{}} className={`list-group-item overflow-x-hidden border border-dark ${checked == (city.name + index) ? 'checked' : ''}`} key={index} onClick={() => HandleCity(city, index)} >
+                        return <li role='button' style={{}} className={`list-group-item overflow-x-hidden border border-dark ${checked == city.name ? 'checked' : ''}`} key={index} onClick={() => HandleCity(city)} >
                             <img className='img-fluid p-1' src={`https://openweathermap.org/images/flags/${city.sys.country.toLowerCase()}.png`} alt="countryLogo" />
                             <p className='d-inline p-1'>{city.name + '(' + city.sys.country + ')'}</p>
                         </li>
