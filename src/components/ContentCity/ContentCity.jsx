@@ -40,6 +40,6 @@ export default function ContentCity() {
                     })
                 }
             </ul>
-        </div> || <Skeleton duration={2} />
+        </div>
     )
 }
