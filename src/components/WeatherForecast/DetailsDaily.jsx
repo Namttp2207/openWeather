@@ -14,8 +14,6 @@ export default function DetailsDaily() {
     dayjs.tz.setDefault(weatherForecast?.timezone);
 
 
-
-
     return (
         detailsDaily && <div className='d-flex'>
             <div className='d-flex flex-column align-items-start w-100'>
