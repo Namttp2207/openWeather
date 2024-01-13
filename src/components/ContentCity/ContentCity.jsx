@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useRecoilValue } from 'recoil';
 import { cityState } from '../../globalState/cityState';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,18 +7,11 @@ import { WeatherForecastState } from '../../globalState/weatherForecastState';
 import { useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { dailyState } from '../../globalState/dailyState';
-import Skeleton from 'react-loading-skeleton';
-
 export default function ContentCity() {
     const dataCity = useRecoilValue(cityState);
     const [daily, SetDaily] = useRecoilState(dailyState)
     const nav = useNavigate()
     const [checked, SetChecked] = useState()
-
-    const [isVisible, setIsVisible] = useState(false);
-    useEffect(() => {
-        setIsVisible(true);
-    }, []);
 
 
     const HandleCity = async (city) => {
@@ -29,7 +22,7 @@ export default function ContentCity() {
     }
     return (
         dataCity &&
-        <div className={`fadeIn ${isVisible ? 'active d-flex align-items-center flex-wrap' : ''}`}>
+        <div className='d-flex align-items-center flex-wrap'>
             <ul className='list-group list-group-horizontal w-100 text-center overflow-x-auto gap-3'>
                 {
                     dataCity.map((city, index) => {
@@ -40,6 +33,6 @@ export default function ContentCity() {
                     })
                 }
             </ul>
-        </div> || <Skeleton duration={2} />
+        </div>
     )
 }

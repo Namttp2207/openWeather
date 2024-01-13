@@ -9,7 +9,6 @@ export default function SearchCity() {
 
     const keySearch = useRef()
     const [dataCity, SetDataCity] = useRecoilState(cityState)
-
     const HandleSearch = async (e) => {
         try {
             const response = await CityApi.getSearch(keySearch.current.value);
