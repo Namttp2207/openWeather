@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil';
 import { cityState } from '../../globalState/cityState';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CityApi from '../../api/cityApi';
-import { WeatherForecastState } from '../../globalState/weatherForecastState';
 import { useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { dailyState } from '../../globalState/dailyState';
-import Skeleton from 'react-loading-skeleton';
 
 export default function ContentCity() {
     const dataCity = useRecoilValue(cityState);
